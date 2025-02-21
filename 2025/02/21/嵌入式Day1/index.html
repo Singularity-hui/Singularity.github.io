@@ -22,7 +22,7 @@
 
   
 
-  <title>归档 | Hui Study Room</title>
+  <title>点亮LED | Hui Study Room</title>
 
   
 
@@ -45,7 +45,7 @@
   <div class="root-container">
     
 <!-- header container -->
-<header class="header-container">
+<header class="header-container post">
   
     <div class="post-image" style="background-image: url(https://singularity-hui.github.io/Singularity.github.io/images/1.jpg)"></div>
   
@@ -88,21 +88,37 @@
 
   
   
+
+  
+  
+
+  
+  
+
+  
+  
     <div class="header-content">
-      <div class="post-text layout-block layout-padding">
-        <h1 class="title-wrap">归档</h1>
-        <h2 class="title-sub-wrap">共有3篇文章</h2>
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">点亮LED</h1>
+          <h2 class="title-sub-wrap">
+            <strong>Hui Zhang</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2025-02-21T14:00:00.000Z" itemprop="datePublished">2025-02-21</time>
+          </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/Singularity.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">🏷️ 嵌入式</a></li>
+  
+</ul>
+        </div>
       </div>
     </div>
-  
-
-  
-  
-
-  
-  
-
-  
   
 
   
@@ -110,62 +126,69 @@
   
 </header>
 
-    <!-- 归档 -->
+    <!-- 文章 -->
 
-<!-- post list container -->
-
-
-
+<!-- 文章内容 -->
 <div class="body-container">
   <article class="content-container layout-block post-container">
-  <div class="article-info">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <p>上学期一冲动花了300大洋报了蓝桥杯，想着寒假逼自己一把学一下，但目前看来的话当时还是过于激进了，哈哈哈哈哈哈。</p>
+<p>开发板配套的教程都是寄存器版本，与比赛所用的HAL库相比太过复杂，一直没找到相应的教程，假期快结束时刷到<a target="_blank" rel="noopener" href="https://space.bilibili.com/6100925">KeyString</a>的教程，讲解的相当好，我的学习路线也将按照他的视频进行</p>
+<h2 id="STM32——CubeMX-配置"><a href="#STM32——CubeMX-配置" class="headerlink" title="STM32——CubeMX 配置"></a>STM32——CubeMX 配置</h2><p>学习采用的开发板是大创老师给的STM32F103ZET6,和比赛用的型号有所出入，但万变不离其宗。</p>
+<h3 id="1-建立空白模版——Template"><a href="#1-建立空白模版——Template" class="headerlink" title="1.建立空白模版——Template"></a>1.建立空白模版——Template</h3><p><strong>查看开发板原理图，找到LED灯对应的引</strong></p>
+<p><img src="/Singularity.github.io/images/4.png" alt="LED引脚图"><br><strong>根据引脚图，调整为GPIO_OUTPUT</strong><br><img src="/Singularity.github.io/images/2.png" alt="CubeMX配置引脚"></p>
+<h3 id="2-配置时钟"><a href="#2-配置时钟" class="headerlink" title="2.配置时钟"></a>2.配置时钟</h3><p><img src="/Singularity.github.io/images/3.png" alt="CubeMX配置时钟界面"></p>
+<h2 id="keil5-配置"><a href="#keil5-配置" class="headerlink" title="keil5 配置"></a>keil5 配置</h2><p>建议写一个<strong>my_main</strong>程序（注：<strong>包含.h文件</strong>）,以后的函数可以写在这个里面，对后续程序的调用和整理会更加方便</p>
+<p>对计数器进行初始化，并编译<br><img src="/Singularity.github.io/images/5.png" alt="keil5"></p>
+<p><strong>注：keil5里的程序写在用户沙盒里，防止generate之后出现程序丢失</strong></p>
+<h2 id="my-main-c"><a href="#my-main-c" class="headerlink" title="my_main.c"></a>my_main.c</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">$ </span><br><span class="line"><span class="comment">#include &quot;my_main.h&quot;</span></span><br><span class="line"></span><br><span class="line">//任务处理</span><br><span class="line">u16 Task_CNT = 0;</span><br><span class="line">u8 Task_100ms = 0,Task_200ms = 0,Task_500ms = 0;</span><br><span class="line">u8 state = 0;</span><br><span class="line">//初始化函数</span><br><span class="line">void My_Init(void)</span><br><span class="line">&#123;	</span><br><span class="line">	</span><br><span class="line">	//开始定时器7定时1毫秒</span><br><span class="line">	HAL_TIM_Base_Start_IT(&amp;htim7);</span><br><span class="line">	//LED</span><br><span class="line">	HAL_GPIO_WritePin(LED_R_GPIO_Port,LED_R_Pin,GPIO_PIN_RESET);</span><br><span class="line">	HAL_GPIO_WritePin(LED_G_GPIO_Port,LED_G_Pin,GPIO_PIN_RESET);</span><br><span class="line">	HAL_GPIO_WritePin(LED_B_GPIO_Port,LED_B_Pin,GPIO_PIN_RESET);</span><br><span class="line">&#125;	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">//循环函数</span><br><span class="line">void My_While(void)</span><br><span class="line">&#123;</span><br><span class="line">//任务100ms</span><br><span class="line">	<span class="keyword">if</span>(Task_100ms)</span><br><span class="line">	&#123;</span><br><span class="line">		HAL_GPIO_TogglePin(LED_R_GPIO_Port,LED_R_Pin);</span><br><span class="line">		Task_100ms = 0;</span><br><span class="line">	&#125;</span><br><span class="line">//任务200ms</span><br><span class="line">	<span class="keyword">if</span>(Task_200ms)</span><br><span class="line">	&#123;</span><br><span class="line">		Task_200ms = 0;</span><br><span class="line">		HAL_GPIO_TogglePin(LED_B_GPIO_Port,LED_B_Pin);</span><br><span class="line">	&#125;</span><br><span class="line">//任务500ms</span><br><span class="line">	<span class="keyword">if</span>(Task_500ms)</span><br><span class="line">	&#123;</span><br><span class="line">		Task_500ms = 0;</span><br><span class="line">		HAL_GPIO_TogglePin(LED_G_GPIO_Port,LED_G_Pin);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//LED流水灯函数</span><br><span class="line">void led(void)</span><br><span class="line">&#123;</span><br><span class="line">	//LED流水灯</span><br><span class="line">	//红灯亮</span><br><span class="line">	<span class="keyword">if</span>(state &lt;= 2 ||state ==4)&#123;</span><br><span class="line">		HAL_GPIO_WritePin(LED_R_GPIO_Port,LED_R_Pin,GPIO_PIN_RESET);	</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;HAL_GPIO_WritePin(LED_R_GPIO_Port,LED_R_Pin,GPIO_PIN_SET);	&#125;</span><br><span class="line">	//绿灯亮</span><br><span class="line">	<span class="keyword">if</span>(state &lt;= 1 ||state ==3 || state == 5)&#123;</span><br><span class="line">		HAL_GPIO_WritePin(LED_G_GPIO_Port,LED_G_Pin,GPIO_PIN_RESET);	</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;HAL_GPIO_WritePin(LED_G_GPIO_Port,LED_G_Pin,GPIO_PIN_SET);;&#125;</span><br><span class="line">	//蓝灯亮</span><br><span class="line">	<span class="keyword">if</span>(state == 0 ||state ==2 ||state == 3 ||state ==6)&#123;</span><br><span class="line">		HAL_GPIO_WritePin(LED_B_GPIO_Port,LED_B_Pin,GPIO_PIN_RESET);	</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;HAL_GPIO_WritePin(LED_B_GPIO_Port,LED_B_Pin,GPIO_PIN_SET);&#125;	</span><br><span class="line">	//超出置零</span><br><span class="line">	<span class="keyword">if</span>(state &gt;6)&#123;state =0;&#125;</span><br><span class="line">	state++;</span><br><span class="line">	HAL_Delay(100);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//定时器回调函数</span><br><span class="line">void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)</span><br><span class="line">&#123;</span><br><span class="line">	//判断定时器为定时器7</span><br><span class="line">	<span class="keyword">if</span>(htim-&gt;Instance == htim7.Instance)</span><br><span class="line">	&#123;</span><br><span class="line">	//任务计数值</span><br><span class="line">		Task_CNT++;</span><br><span class="line">		<span class="keyword">if</span>(Task_CNT &gt;= 60000)	Task_CNT=0;</span><br><span class="line">		<span class="keyword">if</span>(Task_CNT % 100 == 0)	Task_100ms=1;</span><br><span class="line">		<span class="keyword">if</span>(Task_CNT % 200 == 0)	Task_200ms=1;</span><br><span class="line">		<span class="keyword">if</span>(Task_CNT % 500 == 0)	Task_500ms=1;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-        <!-- archive card -->
-<div class="markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-  <h1>2025</h1>  
-  
-      <div>
-        <span>
-          <time  class="article-date" datetime="2025-02-21T14:00:00.000Z" itemprop="datePublished">2025-02-21</time>
-        </span>
-          
-            <a href="/Singularity.github.io/2025/02/21/%E5%B5%8C%E5%85%A5%E5%BC%8FDay1/" itemprop="url">
-              <strong>点亮LED</strong>
-            </a>
-          
-
-      </div>
-  
-      <div>
-        <span>
-          <time  class="article-date" datetime="2025-02-13T17:02:02.000Z" itemprop="datePublished">2025-02-14</time>
-        </span>
-          
-            <a href="/Singularity.github.io/2025/02/14/newpapername/" itemprop="url">
-              <strong>第一篇博客</strong>
-            </a>
-          
-
-      </div>
-  
-      <div>
-        <span>
-          <time  class="article-date" datetime="2025-02-05T07:27:22.444Z" itemprop="datePublished">2025-02-05</time>
-        </span>
-          
-            <a href="/Singularity.github.io/2025/02/05/hello-world/" itemprop="url">
-              <strong>Hello World</strong>
-            </a>
-          
-
-      </div>
-  
+    <div class="card-text">
+      
+        <a href="/Singularity.github.io/2025/02/14/newpapername/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">第一篇博客</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
 </div>
+          
+        </nav>
+      
 
-    
-  </div>
-  <div class="widget-info">
-    <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
   <div class="widget-body">
     
       <img src="https://s.gravatar.com/avatar/2d6b803eea37de0257620d5fabee7e64?s=200&amp;r=g&amp;d=retro" class="soft-size--round soft-style--box" alt="Hui Zhang">
@@ -200,7 +223,9 @@
   </div>
 </section>
 
-    
+      
+
+      
 <section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
   <div class="widget-title">
     <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -214,7 +239,7 @@
 </section>
 
 
-    <section class="widget-categories widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+      <section class="widget-categories widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
   <div class="widget-title">
     <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
@@ -228,7 +253,7 @@
   </div>
 </section>
 
-    <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
   <div class="widget-title">
     <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
@@ -241,15 +266,9 @@
     </div>
   </div>
 </section>
-  </div>
-</article>
-
+    </div>
+  </article>
 </div>
-
-
-
-
-
 
     <!-- footer container -->
 <footer id="footer" class="footer">
@@ -306,6 +325,16 @@
 
   
   
+
+
+
+
+
+
+<!-- copy button  -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+<!-- https://clipboardjs.com/ -->
 
 
 
